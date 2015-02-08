@@ -1,0 +1,41 @@
+
+
+
+
+BEGIN Program
+	Name				Gardening
+	SessionCost			-20
+	Places				10
+	SessionLength		120
+	NumSessions			1
+	Difficulty			2
+	Research			Gardening
+	Room				Garden
+	Teacher				Gardener
+	Equipment			None
+	Intake				Voluntary
+END
+
+
+
+
+
+
+
+
+
+
+BEGIN Program
+	Name				Munching
+	SessionCost			-100
+	Places				10
+	SessionLength		120
+	NumSessions			1
+	Difficulty			1
+	Research			Vending
+	Room				CommonRoom
+	Teacher				Warden
+	Equipment			Snack
+	Intake				Voluntary
+	Properties			Repeatable
+END

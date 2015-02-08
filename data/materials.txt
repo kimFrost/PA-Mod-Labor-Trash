@@ -1,0 +1,260 @@
+
+BEGIN Object
+	Name 				BoxfarmCabbage
+	Width				1
+	Height				1
+	RenderDepth			3
+	MoveSpeedFactor		0.90000
+	Toughness			1.00000
+	MaxStackSize		10
+	Group				Material
+	BlockedBy			Wall
+	MadeOf				Composite
+	SpriteScale			1.00
+	Properties          Material
+	BEGIN	Sprite
+		x 4
+		y 1
+		w 1
+		h 1
+		RotateType 4
+	END
+END
+
+
+BEGIN Object
+	Name 				BoxfarmPotato
+	Width				1
+	Height				1
+	RenderDepth			3
+	MoveSpeedFactor		0.90000
+	Toughness			1.00000
+	MaxStackSize		20
+	BlockedBy			Wall
+	MadeOf				Composite
+	SpriteScale			1.00
+	Properties          Material
+	BEGIN	Sprite
+		x 4
+		y 0
+		w 1
+		h 1
+		RotateType 4
+	END
+END
+
+
+BEGIN Object
+	Name				BoxfarmPlant
+	Width				1
+	Height				1
+	Toughness			2.00000
+	Price				-50
+	ConstructionTime	2.00000
+	MoveSpeedFactor		0.80000
+	BlockedBy			Wall
+	BlockedBy			StaticObject
+	BlockedBy			UtilityStation
+	MaxStackSize		1
+	RenderDepth			1
+	Group               StaticObject
+	WorkGroup			Garden
+	Properties			Scripted
+	Properties          RoomSpecific
+	Properties          StaticObject
+	BEGIN Sprite
+		x 0
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+	BEGIN Sprite
+		x 1
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+	BEGIN Sprite
+		x 2
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+	BEGIN Sprite
+		x 3
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+	BEGIN Sprite
+		x 4
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+	BEGIN Sprite
+		x 6
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+	BEGIN StackSprite
+		x 5
+		y 5
+		w 1
+		h 1
+		RotateType 0
+	END
+END
+
+
+BEGIN Object
+	Name 				BoxfarmWorktable
+	Width				3
+	Height				1
+	Price				-300
+	ConstructionTime	3.00000
+	RenderDepth			1
+	MoveSpeedFactor		0.60000
+	Toughness			5.00000
+	MaxStackSize		1
+	NumSlots			3
+	BlockedBy			Wall
+	BlockedBy			StaticObject
+	BlockedBy			UtilityStation
+	Group				StaticObject
+	MadeOf				Wood
+	SpriteScale			1.00
+	Properties			StaticObject
+	Properties			Processor
+	WorkGroup			Garden
+	BEGIN	Sprite
+		x 5
+		y 1
+		w 3
+		h 1
+		RotateType 4
+		BEGIN Marker
+			x				1.5
+			y				1.0
+			orientation.x 	0.0
+			orientation.y 	0.0
+			Index			0
+		END
+		BEGIN Marker
+			x				3.1
+			y				1.0
+			Index			1
+		END
+		BEGIN Marker
+			x				4.7
+			y				1.0
+			Index			2
+		END
+	END
+END
+
+
+
+BEGIN Equipment
+    Name                 BoxfarmTrowel
+    Scale                0.800000
+    AttackPower          0.40000
+    RechargeTime         1.00000
+    Properties           Tools
+    Properties           Metal
+    BEGIN   Sprite
+        x 8
+        y 0
+        w 2
+        h 2
+        RotateType 4
+        BEGIN Marker
+           x             0.9
+           y             1.0
+           Index         0
+        END
+    END
+END
+
+
+BEGIN Equipment
+    Name                 BoxfarmWateringCan
+    Scale                0.800000
+    AttackPower          0.40000
+    RechargeTime         1.00000
+    Properties           Tools
+    Properties           Metal
+    BEGIN   Sprite
+        x 5
+        y 0
+        w 1
+        h 1
+        RotateType 4
+        BEGIN Marker
+           x             0.9
+           y             1.0
+           Index         0
+        END
+    END
+END
+
+
+
+
+
+BEGIN Room
+	Name				Garden
+	Properties          PrisonersCanWork
+	Qualification		Gardening
+	WorkGroup           Garden
+	BEGIN Requirement Type Enclosed END
+	BEGIN Requirement Type MinimumSize  x 11  y 5 END
+	BEGIN Requirement Type Object  Id BoxfarmWorktable END
+	BEGIN Requirement Type Object  Id BoxfarmPlant END
+	BEGIN Requirement Type Outdoor END
+	BEGIN Contraband  Id BoxfarmTrowel END
+	BEGIN Contraband  Id BoxfarmWateringCan END
+END
+
+
+
+
+
+
+
+BEGIN Material
+	Name				NewMaterial
+	ConstructionTime	1.00000
+	MoveCost			0.7
+	SoftEdged			1
+	IndoorOutdoor 		1
+	ObjectRequired		Snack
+	SpriteType			RandomArea
+	SpriteOverlayScale	5
+	NumSprites			2
+	BEGIN Sprite0    
+		x 5  y 4  
+	END
+    BEGIN Sprite1    
+		x 5  y 2  
+	END
+END
+
+
+BEGIN Object
+	Name				PropertyHolder
+	Properties			Material
+	Properties			StaticObject
+	Properties			SlowDelivery
+	Properties			RoomSpecific
+	WorkGroup           Garden
+	AutoOrder           Compost
+	AutoOrderQuantity   1
+END

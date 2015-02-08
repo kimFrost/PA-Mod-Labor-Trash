@@ -1,0 +1,11 @@
+
+BEGIN Research
+	Name			Gardening
+	Type			Ability
+	Requires		Maintainance
+	Admin			Maintainance
+	Cost			-400
+	Time			360
+	X				300
+	Y				650
+END
